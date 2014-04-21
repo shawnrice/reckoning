@@ -1,4 +1,4 @@
-=== @TODO: Reckoning ===
+=== Reckoning ===
 Contributors: shawn-patrick-rice
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=rice@shawnrice.com
 Tags: comments, posts, tools, reckoning, reckon, tally, assessment
