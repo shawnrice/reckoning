@@ -1,0 +1,33 @@
+.reckoning-table {
+	border-collapse:collapse;
+}
+
+.reckoning-table tbody tr td {
+	line-height: 1.4em;
+	padding: .5em 1em;
+}
+
+.reckoning-table tbody tr td:last-child {
+	text-align: right;
+}
+
+.reckoning-table tbody tr:nth-child(odd) {
+   background-color: #ccc;
+}
+
+.reckoning-table tbody tr:last-child {
+   background-color: #abc;
+}
+
+.reckoning-table tbody tr:last-child {
+   border-top: 1px solid black;
+   background-color: #abc;
+}
+
+.reckoning-table tbody tr:nth-last-child(2) {
+   background-color: #abc;	
+}
+
+.reckoning-table tbody tr:nth-last-child(2) td {
+   border-top: 2px solid black;
+}
