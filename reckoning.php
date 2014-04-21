@@ -14,15 +14,13 @@
  * @wordpress-plugin
  * Plugin Name:       Reckoning
  * Plugin URI:        @TODO
- * Description:       @TODO
+ * Description:       Tallies posts / comments per user per blog.
  * Version:           1.0.0
  * Author:            Shawn Patrick Rice
- * Author URI:        shawnrice.org
- * Text Domain:       reckoning-locale
+ * Author URI:        http://shawnrice.org
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
- * Domain Path:       /languages
- * GitHub Plugin URI: https://github.com/<owner>/<repo>
+ * GitHub Plugin URI: https://github.com/shawnrice/wp-reckoning
  */
 
 if ( ! defined( 'WPINC' ) ) {
