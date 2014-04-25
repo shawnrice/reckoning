@@ -198,7 +198,7 @@ function display_reckoning_admin_page_all() {
 
 	// Start looping through each user.
 	foreach ( $users as $user ) :
-		$posts = get_posts( array( 'author' => $user->data->ID, 'posts_per_page' => 100000 ) );
+		$posts = get_posts( array( 'author' => $user->data->ID, 'posts_per_page' => '100000' ) );
 		$comments = get_comments( array( 'user_id' => $user->data->ID ) );
 
 		// Show the username with a link to a more detailed view of the user.
