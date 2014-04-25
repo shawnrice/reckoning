@@ -13,7 +13,7 @@
  *
  * @wordpress-plugin
  * Plugin Name:       Reckoning
- * Plugin URI:        @TODO
+ * Plugin URI:        http://shawnrice.github.io/wp-reckoning/
  * Description:       Tallies posts / comments per user per blog.
  * Version:           1.0.0
  * Author:            Shawn Patrick Rice
@@ -24,21 +24,21 @@
  * GitHub Plugin URI: https://github.com/shawnrice/wp-reckoning
  */
 
-/*  Copyright YEAR  PLUGIN_AUTHOR_NAME  (email : PLUGIN AUTHOR EMAIL)
-
-    This program is free software; you can redistribute it and/or modify
-    it under the terms of the GNU General Public License, version 2, as 
-    published by the Free Software Foundation.
-
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with this program; if not, write to the Free Software
-    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
-*/
+/*  Copyright 2104  Shawn Patrick Rice  (email : rice@shawnrice.org)
+ *
+ *  This program is free software; you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License, version 2, as
+ *  published by the Free Software Foundation.
+ *
+ *  This program is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ * 
+ *  You should have received a copy of the GNU General Public License
+ *  along with this program; if not, write to the Free Software
+ *  Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ */
 
 if ( ! defined( 'WPINC' ) ) {
 	die;
@@ -104,7 +104,7 @@ function display_reckoning_admin_page() {
  * @since 1.0.0
  *
  * @global $wpdb.
- * 
+ *
  * @param object $var Description.
  */
 function display_reckoning_admin_page_individual( $user ) {
@@ -177,7 +177,7 @@ function display_reckoning_admin_page_individual( $user ) {
 /**
  * Display summary page for all users.
  *
- * Displays a summary page that tallies the number of both posts and comments, 
+ * Displays a summary page that tallies the number of both posts and comments,
  * per user and displays links to the post/comment, sorted by date.
  *
  * @since 1.0.0
