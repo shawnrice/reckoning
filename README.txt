@@ -1,14 +1,14 @@
 === Reckoning ===
 Contributors: shawn-patrick-rice
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=rice@shawnrice.com
-Tags: comments, posts, tools, reckoning, reckon, tally, assessment
+Tags: comments, posts, tools, reckoning, reckon, tally, assessment, teaching, education
 Requires at least: 3.5.1
 Tested up to: 3.9
 Stable tag: 1.0.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Adds a submenu (under tools) that tallies all the users' posts and comments on a blog, especially useful for assement of blogs for classes.
+Adds a submenu (under Users) that tallies all the users' posts and comments on a blog, especially useful for assement of blogs for classes.
 
 == Description ==
 
@@ -39,6 +39,9 @@ Just install like you would regularly. This plugin does not create any table or 
 3. Upload the `reckoning` directory to the `/wp-content/plugins/` directory
 4. Activate the plugin in the Plugin dashboard
 
+== Github Repo ==
+
+Please report any issues with the plugin via the [Github repo](https://github.com/shawnrice/wp-reckoning).
 
 == Changelog ==
 
