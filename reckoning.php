@@ -111,7 +111,7 @@ function display_reckoning_admin_page_individual( $user ) {
 	global $wpdb;
 	$blog = get_blog_details();
 	$comments = get_comments( array( 'user_id' => $user->data->ID ) );
-	$posts = get_posts( array( 'author' => $user->data->ID ) );
+	$posts = get_posts( array( 'author' => $user->data->ID , 'numberposts' => 0 ) );
 ?>
 	<div class="wrap">
 	<h2><?php echo esc_html( get_admin_page_title() ); ?></h2>
@@ -198,7 +198,7 @@ function display_reckoning_admin_page_all() {
 
 	// Start looping through each user.
 	foreach ( $users as $user ) :
-		$posts = get_posts( array( 'author' => $user->data->ID ) );
+		$posts = get_posts( array( 'author' => $user->data->ID, 'numberposts' => 0 ) );
 		$comments = get_comments( array( 'user_id' => $user->data->ID ) );
 
 		// Show the username with a link to a more detailed view of the user.
