@@ -4,7 +4,7 @@
 
 .reckoning-table {
    margin-bottom: 1em;
-   min-width: 60%;
+   width: 80%;
    border: 1px solid #bbb;
    border-collapse: collapse;
 }
@@ -18,10 +18,13 @@
 .reckoning-table tbody tr td:first-child {
    text-align: left;
 }
-.reckoning-table tbody tr:nth-child(3) {
+.reckoning-table tbody tr {
+   background-color: #fff;
+}
+.reckoning-table tbody tr:nth-child(4n-1) {
    background-color: #ececec;
 }
-.reckoning-table tbody tr:nth-child(4) {
+.reckoning-table tbody tr:nth-child(4n) {
    background-color: #ececec;
 }
 

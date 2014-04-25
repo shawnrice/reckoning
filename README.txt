@@ -12,6 +12,22 @@ Adds a submenu (under Users) that tallies all the users' posts and comments on a
 
 == Description ==
 
+Reckoning provides a nice overview of a blog's content sorted by user. It provides a page in the Admin Dashboard page ("Users->User Summary") that lists the users' post titles and dates underneath their names with a total count, and it does the same for the comments. If you click on an author's name, then you'll see an overview page for the author with the same information, but the content of the posts and the comments will be listed there too.
+
+This plugin creates no database tables, and it does not store or alter any data; it simply displays data in a convenient fashion.
+
+The initial use-case for Reckoning was for professors who use class blogs to assess their students' work at the end of the semester (read: The Reckoning). It basically gives a birds-eye-view of who has posted and commented.
+
+_Support for the writing of this plugin came from CUNY: Baruch College's Bernard L. Schwartz Communications Institute and the Center for Teaching and Learning._
+
+== Screenshots ==
+
+1. The overview page.
+2. Top of overview page and if the user's display name hasn't been changed.
+3. Posts on a single author page.
+4. Comments on a single author page.
+5. A non-prolific single author page.
+6. The menu item (called "User Summary").
 
 == Installation ==
 
@@ -41,7 +57,7 @@ Just install like you would regularly. This plugin does not create any table or 
 
 == Github Repo ==
 
-Please report any issues with the plugin via the [Github repo](https://github.com/shawnrice/wp-reckoning).
+Please report any issues with the plugin via the [Github repository](https://github.com/shawnrice/wp-reckoning).
 
 == Changelog ==
 
