@@ -15,7 +15,7 @@
  * Plugin Name:       Reckoning
  * Plugin URI:        http://shawnrice.github.io/wp-reckoning/
  * Description:       Tallies posts / comments per user per blog.
- * Version:           1.0.1
+ * Version:           1.0.2
  * Author:            Shawn Patrick Rice
  * Author URI:        http://shawnrice.org
  * Text Domain:		   reckoning
