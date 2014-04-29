@@ -18,23 +18,21 @@ This plugin creates no database tables, and it does not store or alter any data;
 
 The initial use-case for Reckoning was for professors who use class blogs to assess their students' work at the end of the semester (read: The Reckoning). It basically gives a birds-eye-view of who has posted and commented.
 
-<img src='https://raw.githubusercontent.com/shawnrice/reckoning/master/assets/screenshot-1.png' width='250px' alt='screenshot' />
-
 _Developed for [Blogs@Baruch](http://blsciblogs.baruch.cuny.edu/) with support from CUNY: Baruch College's [Bernard L. Schwartz Communications Institute](http://blsci.baruch.cuny.edu) and the [Center for Teaching and Learning](http://ctl.baruch.cuny.edu)._
 
 ## Screenshots ##
 
 ###1. The overview page###
-![The overview page](http://s-plugins.wordpress.org/reckoning/assets/screenshot-1.png)
+![The overview page](https://raw.githubusercontent.com/shawnrice/reckoning/master/assets/screenshot-1.png)
 
 ###2. Comments on a single author page###
-![Comments on a single author page](http://s-plugins.wordpress.org/reckoning/assets/screenshot-2.png)
+![Comments on a single author page](https://raw.githubusercontent.com/shawnrice/reckoning/master/assets/screenshot-2.png)
 
 ###3. A non-prolific single author page###
-![A non-prolific single author page](http://s-plugins.wordpress.org/reckoning/assets/screenshot-3.png)
+![A non-prolific single author page](https://raw.githubusercontent.com/shawnrice/reckoning/master/assets/screenshot-3.png)
 
 ###4. The menu item (called "User Summary")###
-![The menu item (called "User Summary")](http://s-plugins.wordpress.org/reckoning/assets/screenshot-4.png)
+![The menu item (called "User Summary")](https://raw.githubusercontent.com/shawnrice/reckoning/master/assets/screenshot-4.png)
 
 
 ## Installation ##
