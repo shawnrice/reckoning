@@ -8,6 +8,14 @@
    border: 1px solid #bbb;
    border-collapse: collapse;
 }
+.reckoning-table tbody tr th {
+  text-align: left;
+  padding: .5em 1em;
+  border-bottom: 1px solid #bbb;
+}
+.reckoning-table tbody tr th h3 {
+  margin: 0;
+}
 .reckoning-table tbody tr td {
    padding: .5em 1em;
    line-height: 1.4;
@@ -29,10 +37,10 @@
 }
 
 .reckoning-table-all tbody tr:nth-child(even) {
-    background-color: #ececec;  
+    background-color: #ececec;
 }
 .reckoning-table-all tbody tr:nth-child(odd) {
-    background-color: #fff;  
+    background-color: #fff;
 }
 .reckoning-table-all tbody tr:last-child {
    border-top: 1px solid black;

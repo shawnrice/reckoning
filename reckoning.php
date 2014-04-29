@@ -34,7 +34,7 @@
  *  but WITHOUT ANY WARRANTY; without even the implied warranty of
  *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  *  GNU General Public License for more details.
- * 
+ *
  *  You should have received a copy of the GNU General Public License
  *  along with this program; if not, write to the Free Software
  *  Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
@@ -134,6 +134,7 @@ function display_reckoning_admin_page_individual( $user ) {
 	else {
 		echo '<h3>' . __( 'Total Posts', 'reckoning' ) . ': ' . count( $posts ) . '</h3>';
 		echo "<table class = 'reckoning-table'>";
+    echo "<tr><th colspan='2'>User Posts</th></tr>";
 		foreach ( $posts as $post ) :
 			echo '<tr>';
 			preg_match( "/([0-9]{4})-([0-9]{2})-([0-9]{2})/", $post->post_date, $matches );
@@ -154,6 +155,7 @@ function display_reckoning_admin_page_individual( $user ) {
 	} else {
 		echo '<h3>' . __( 'Total Comments', 'reckoning' ) . ': ' . count( $comments ) . '</h3>';
 		echo "<table class = 'reckoning-table'>";
+    echo "<tr><th colspan='2'>User Comments</th></tr>";
 		foreach (  $comments as $comment ) :
 			$post = get_post( $comment->comment_post_ID );
 			preg_match( "/([0-9]{4})-([0-9]{2})-([0-9]{2})/", $comment->comment_date, $matches );
@@ -215,6 +217,7 @@ function display_reckoning_admin_page_all() {
 			echo '<h4>"' . ucwords( $user->display_name ) . '" ' . __( 'has not written a post', 'reckoning' ) . '.</h4>';
 		} else {
 			echo "<table class = 'reckoning-table reckoning-table-all'>";
+      echo "<tr><th colspan='2'><h3>User Posts</h3></th></tr>";
 			foreach ( $posts as $post ) :
 				preg_match( "/([0-9]{4})-([0-9]{2})-([0-9]{2})/", $post->post_date, $matches );
 				$date = "$matches[2]/$matches[3]/$matches[1]";
@@ -230,12 +233,13 @@ function display_reckoning_admin_page_all() {
 			echo '<h4>"' . ucwords( $user->display_name ) . '" ' . __( 'has not posted a comment', 'reckoning' ) . '.</h4>';
 		} else {
 			echo "<table class = 'reckoning-table reckoning-table-all'>";
+      echo "<tr><th colspan='2'><h3>User Comments</h3></th></tr>";
 			foreach ( $comments as $comment ) :
 				$post = get_post( $comment->comment_post_ID );
 				preg_match( "/([0-9]{4})-([0-9]{2})-([0-9]{2})/", $comment->comment_date, $matches );
 				$date = "$matches[2]/$matches[3]/$matches[1]";
-				
-				echo '<tr>';			
+
+				echo '<tr>';
 				echo "<td>On <a href='" . $post->guid . "#comment-" . $comment->comment_ID . "'>$post->post_title</a></td>";
 				echo "<td>$date</td>";
 				echo '</tr>';

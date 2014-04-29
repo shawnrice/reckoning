@@ -18,16 +18,17 @@ This plugin creates no database tables, and it does not store or alter any data;
 
 The initial use-case for Reckoning was for professors who use class blogs to assess their students' work at the end of the semester (read: The Reckoning). It basically gives a birds-eye-view of who has posted and commented.
 
-_Support for the writing of this plugin came from CUNY: Baruch College's Bernard L. Schwartz Communications Institute and the Center for Teaching and Learning._
+
+
+_Developed for [Blogs@Baruch](http://blsciblogs.baruch.cuny.edu/) with support for the writing of this plugin came from CUNY: Baruch College's [Bernard L. Schwartz Communications Institute](http://blsci.baruch.cuny.edu) and the [Center for Teaching and Learning](http://ctl.baruch.cuny.edu)._
 
 == Screenshots ==
 
-1. The overview page.
-2. Top of overview page and if the user's display name hasn't been changed.
-3. Posts on a single author page.
-4. Comments on a single author page.
-5. A non-prolific single author page.
-6. The menu item (called "User Summary").
+1. The overview page
+2. Posts on a single author page
+3. Comments on a single author page
+4. A non-prolific single author page
+5. The menu item (called "User Summary")
 
 == Installation ==
 
@@ -60,7 +61,8 @@ Just install like you would regularly. This plugin does not create any table or 
 Please report any issues with the plugin via the [Github repository](https://github.com/shawnrice/wp-reckoning).
 
 == Changelog ==
+= 1.0.1 =
+* Added headers to tables for clarity.
 
-= 1.0 =
-* Initial Commit
-
+= 1.0.0 =
+* Initial Commit.
