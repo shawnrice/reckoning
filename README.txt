@@ -18,17 +18,16 @@ This plugin creates no database tables, and it does not store or alter any data;
 
 The initial use-case for Reckoning was for professors who use class blogs to assess their students' work at the end of the semester (read: The Reckoning). It basically gives a birds-eye-view of who has posted and commented.
 
-
+<img src='https://raw.githubusercontent.com/shawnrice/reckoning/master/assets/screenshot-1.png' width='250px' alt='screenshot' />
 
 _Developed for [Blogs@Baruch](http://blsciblogs.baruch.cuny.edu/) with support for the writing of this plugin came from CUNY: Baruch College's [Bernard L. Schwartz Communications Institute](http://blsci.baruch.cuny.edu) and the [Center for Teaching and Learning](http://ctl.baruch.cuny.edu)._
 
 == Screenshots ==
 
 1. The overview page
-2. Posts on a single author page
-3. Comments on a single author page
-4. A non-prolific single author page
-5. The menu item (called "User Summary")
+2. Comments on a single author page
+3. A non-prolific single author page
+4. The menu item (called "User Summary")
 
 == Installation ==
 
