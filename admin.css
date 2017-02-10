@@ -26,22 +26,18 @@
 .reckoning-table tbody tr td:first-child {
   text-align: left;
 }
-.reckoning-table tbody tr {
-  background-color: #fff;
-}
-.reckoning-table tbody tr:nth-child(4n-1) {
-  background-color: #ececec;
-}
-.reckoning-table tbody tr:nth-child(4n) {
-  background-color: #ececec;
-}
 
+.reckoning-table tbody tr:nth-child(4n),
+.reckoning-table tbody tr:nth-child(4n-1),
 .reckoning-table-all tbody tr:nth-child(even) {
   background-color: #ececec;
 }
+
+.reckoning-table tbody tr,
 .reckoning-table-all tbody tr:nth-child(odd) {
   background-color: #fff;
 }
+
 .reckoning-table-all tbody tr:last-child {
   border-top: 1px solid black;
   background-color: #abc;
