@@ -84,7 +84,7 @@ function enqueue_reckoning_admin_styles() {
  */
 function display_reckoning_admin_page() {
 	if ( isset( $_GET['view'] ) ) {
-		if ( $_GET['view'] == 'all' ) {
+		if ( 'all' === $_GET['view'] ) {
 			display_reckoning_admin_page_all();
 		} elseif ( $user = get_user_by( 'login' , $_GET['view'] ) ) {
 			display_reckoning_admin_page_individual( $user );
@@ -109,69 +109,98 @@ function display_reckoning_admin_page() {
  */
 function display_reckoning_admin_page_individual( $user ) {
 	global $wpdb;
-	$blog = get_blog_details();
-	$comments = get_comments( array( 'user_id' => $user->data->ID ) );
-	$posts = get_posts( array( 'author' => $user->data->ID, 'numberposts' => '-1', 'post_status' => array( 'publish', 'private' ) ) );
-?>
-	<div class="wrap">
-	<h2><?php echo esc_html( get_admin_page_title() ); ?></h2>
-<?php
+	$blog     = get_blog_details();
+	$comments = get_comments( [ 'user_id' => $user->data->ID ] );
+	$posts    = get_posts( [
+		 'author' => $user->data->ID,
+		 'numberposts' => '-1',
+		 'post_status' => [
+				'publish',
+				'private',
+			],
+	] );
+
+	echo '<div class="wrap">';
+	echo '<h2>' . esc_html( get_admin_page_title() ) . '</h2>';
 
 	// Print a "return to overview" link
-	echo "<h4><a href='users.php?page=Reckoning'>« " . __( 'Return to Blog Overview',  'reckoning' ) . '</a></h4>';
+	echo '<h4>';
+	echo '<a href="users.php?page=Reckoning">';
+	echo '« ' . esc_html( __( 'Return to Blog Overview',  'reckoning' ) );
+	echo '</a>';
+	echo '</h4>';
 
-	echo '<h2 class="entry-title">' . __( 'Summary of User Activity for ',  'reckoning' ) . '"' . ucwords( $user->display_name ) . '" ';
+	echo '<h2 class="entry-title">';
+	echo esc_html( __( 'Summary of User Activity for ',  'reckoning' ) );
+	echo '"' . esc_html( ucwords( $user->display_name ) ) . '" ';
 	// If the display name and the nicename are different, then show both.
-if ( $user->display_name != $user->data->user_nicename ) {
-	echo '(' . $user->data->user_nicename . ') ';
-}
-	echo 'on "' . esc_html( $blog->blogname ) . '"</h2>';
+	if ( $user->display_name !== $user->data->user_nicename ) {
+		echo '(' . esc_html( $user->data->user_nicename ) . ') ';
+	}
+	echo 'on "' . esc_html( $blog->blogname ) . '"';
+	echo '</h2>';
 
 	// Start processing Posts. Check if there are posts, if so, print the table with all of the posts;
 	// if not, print a message saying there are no posts.
-if ( ! count( $posts ) ) {
-	echo '<h3>"' . ucwords( $user->display_name ) . '" ' . __( 'has not written a post', 'reckoning' ) . '.</h3>';
-} else {
-	echo '<h3>' . __( 'Total Posts', 'reckoning' ) . ': ' . count( $posts ) . '</h3>';
-	echo "<table class = 'reckoning-table'>";
-	echo "<tr><th colspan='2'>User Posts</th></tr>";
-	foreach ( $posts as $post ) :
-		echo '<tr>';
-		preg_match( '/([0-9]{4})-([0-9]{2})-([0-9]{2})/', $post->post_date, $matches );
-		$date = "$matches[2]/$matches[3]/$matches[1]";
-		echo "<td><a href='$post->guid'>$post->post_title</a></td><td>$date</td>";
-		echo '</tr>';
-		echo '<tr><td colspan="2">' . $post->post_content . '</td></tr>';
-		endforeach;
-	echo '</table>';
-}
+	if ( ! count( $posts ) ) {
+		echo '<h3>';
+		echo '"' . esc_html( ucwords( $user->display_name ) ) . '" ';
+		echo esc_html( __( 'has not written a post', 'reckoning' ) ) . '.';
+		echo '</h3>';
+	} else {
+		echo '<h3>' . esc_html( __( 'Total Posts', 'reckoning' ) ) . ': ' . esc_html( count( $posts ) ) . '</h3>';
+		echo "<table class = 'reckoning-table'>";
+		echo "<tr><th colspan='2'>User Posts</th></tr>";
+		foreach ( $posts as $post ) :
+			echo '<tr>';
+			preg_match( '/([0-9]{4})-([0-9]{2})-([0-9]{2})/', $post->post_date, $matches );
+			$date = "{$matches[2]}/{$matches[3]}/{$matches[1]}";
+			echo '<td><a href="' . esc_url( $post->guid ) . '">';
+			echo wp_kses_post( $post->post_title );
+			echo '</a></td>';
+			echo '<td>' . esc_html( $date ) . '</td>';
+			echo '</tr>';
+			echo '<tr><td colspan="2">' . wp_kses_post( $post->post_content ) . '</td></tr>';
+			endforeach;
+		echo '</table>';
+	}
 
 	echo '<p>&nbsp;</p>';
 
 	// Start processing comments. Check if there are comments, if so, print the table with all of the comments;
 	// if not, print a message saying there are no comments.
-if ( ! count( $comments ) ) {
-	echo '<h3>"' . ucwords( $user->display_name ) . '" ' . __( 'has not posted a comment', 'reckoning' ) . '.</h3>';
-} else {
-	echo '<h3>' . __( 'Total Comments', 'reckoning' ) . ': ' . count( $comments ) . '</h3>';
-	echo "<table class = 'reckoning-table'>";
-	echo "<tr><th colspan='2'>User Comments</th></tr>";
-	foreach (  $comments as $comment ) :
-		$post = get_post( $comment->comment_post_ID );
-		preg_match( '/([0-9]{4})-([0-9]{2})-([0-9]{2})/', $comment->comment_date, $matches );
-		$date = "$matches[2]/$matches[3]/$matches[1]";
-		echo '<tr>';
-		echo '<td>' . __( 'On', 'reckoning' ) . " <a href='" . $post->guid . '#comment-' . $comment->comment_ID . "'>$post->post_title</a></td>";
-		echo "<td>$date</td>";
-		echo '</tr>';
-		echo '<tr><td colspan="2">' . $comment->comment_content . '</td></tr>';
+	if ( ! count( $comments ) ) {
+		echo '<h3>';
+		echo '"' . esc_html( ucwords( $user->display_name ) ) . '" ';
+		echo esc_html( __( 'has not posted a comment', 'reckoning' ) );
+		echo '.</h3>';
+	} else {
+		echo '<h3>' . esc_html( __( 'Total Comments', 'reckoning' ) ) . ': ' . count( $comments ) . '</h3>';
+		echo "<table class = 'reckoning-table'>";
+		echo "<tr><th colspan='2'>User Comments</th></tr>";
+		foreach (  $comments as $comment ) :
+			$post = get_post( $comment->comment_post_ID );
+			preg_match( '/([0-9]{4})-([0-9]{2})-([0-9]{2})/', $comment->comment_date, $matches );
+			$date = "{$matches[2]}/{$matches[3]}/{$matches[1]}";
+			echo '<tr>';
+			echo '<td>';
+			echo esc_html( __( 'On', 'reckoning' ) );
+			echo ' <a href="' . esc_url( $post->guid . '#comment-' . $comment->comment_ID ) . '">';
+			echo esc_html( $post->post_title ) . '</a></td>';
+			echo '<td>' . esc_html( $date ) . '</td>';
+			echo '</tr>';
+			echo '<tr><td colspan="2">' . wp_kses_post( $comment->comment_content ) . '</td></tr>';
 		endforeach;
-	echo '</table>';
-}
+		echo '</table>';
+	}
 	echo '<p>&nbsp;</p>';
 
 	// Print a "return to overview" link
-	echo "<h4><a href='users.php?page=Reckoning'>« " . __( 'Return to Blog Overview', 'reckoning' ) . '</a></h4>';
+	echo '<h4>';
+	echo '<a href="users.php?page=Reckoning">';
+	echo '« ' . esc_html( __( 'Return to Blog Overview', 'reckoning' ) );
+	echo '</a>';
+	echo '</h4>';
 
 } // display_reckoning_admin_page_individual
 
@@ -195,62 +224,95 @@ function display_reckoning_admin_page_all() {
 	<h2><?php echo esc_html( get_admin_page_title() ); ?></h2>
 
 <?php
-	echo '<h2 class="entry-title">' . __( 'Summary of User Activity on', 'reckoning' ) . '"' . esc_html( $blog->blogname ) . '"</h2>';
-	echo '<small>' . __( 'Click the name of the user to see a more detailed report for that user', 'reckoning' ) . '.</small>';
+	echo '<h2 class="entry-title">';
+	echo esc_html( __( 'Summary of User Activity on', 'reckoning' ) );
+	echo '"' . esc_html( $blog->blogname ) . '"';
+	echo '</h2>';
+	echo '<small>';
+	echo esc_html( __( 'Click the name of the user to see a more detailed report for that user', 'reckoning' ) ) . '.';
+	echo '</small>';
 
 	// Start looping through each user.
 foreach ( $users as $user ) :
-	$posts = get_posts( array( 'author' => $user->data->ID, 'numberposts' => '-1', 'post_status' => array( 'publish', 'private' ) ) );
-	$comments = get_comments( array( 'user_id' => $user->data->ID ) );
+	$posts = get_posts( [
+		'author'      => $user->data->ID,
+		'numberposts' => '-1',
+		'post_status' => [
+			'publish',
+			'private',
+		],
+	] );
+	$comments = get_comments( [ 'user_id' => $user->data->ID ] );
 
 	// Show the username with a link to a more detailed view of the user.
-	echo "<h3><a href='users.php?page=Reckoning&view=" . $user->data->user_login . "'>" . ucwords( $user->data->display_name ) . '</a>';
+	echo '<h3>';
+	echo '<a href="' . esc_url( 'users.php?page=Reckoning&view=' . $user->data->user_login ) . '">';
+	echo esc_html( ucwords( $user->data->display_name ) );
+	echo '</a>';
 	// If the display name and the nicename are different, then show both.
-	if ( $user->data->display_name != $user->data->user_nicename ) {
-		echo ' (' . $user->data->user_nicename . ') ';
+	if ( $user->data->display_name !== $user->data->user_nicename ) {
+		echo ' (' . esc_html( $user->data->user_nicename ) . ') ';
 	}
 	echo '</h3>';
 
 	// Start processing Posts. Check if there are posts, if so, print the table with all of the posts;
 	// if not, print a message saying there are no posts.
 	if ( ! count( $posts ) ) {
-		echo '<h4>"' . ucwords( $user->display_name ) . '" ' . __( 'has not written a post', 'reckoning' ) . '.</h4>';
+		echo '<h4>';
+		echo '"' . esc_html( ucwords( $user->display_name ) ) . '" ';
+		echo esc_html( __( 'has not written a post', 'reckoning' ) ) . '.';
+		echo '</h4>';
 	} else {
 		echo "<table class = 'reckoning-table reckoning-table-all'>";
 		echo "<tr><th colspan='2'><h3>User Posts</h3></th></tr>";
 		foreach ( $posts as $post ) :
 			preg_match( '/([0-9]{4})-([0-9]{2})-([0-9]{2})/', $post->post_date, $matches );
 			$date = "$matches[2]/$matches[3]/$matches[1]";
-			echo "<tr><td><a href='$post->guid'>$post->post_title</a></td><td>$date</td></tr>";
-			endforeach;
-		echo '<tr><td>' . __( 'Total Posts', 'reckoning' ) . '</td><td>' . count( $posts ) . '</td></tr>';
+			echo '<tr><td>';
+			echo '<a href="' . esc_url( $post->guid ) . '">';
+			echo wp_kses_post( $post->post_title );
+			echo '</a>';
+			echo '</td>';
+			echo '<td>' . esc_html( $date ) . '</td></tr>';
+		endforeach;
+		echo '<tr>';
+		echo '<td>' . esc_html( __( 'Total Posts', 'reckoning' ) ) . '</td>';
+		echo '<td>' . (int) count( $posts ) . '</td>';
+		echo '</tr>';
 		echo '</table>';
 	}
 
 	// Start processing comments. Check if there are comments, if so, print the table with all of the comments;
 	// if not, print a message saying there are no comments.
 	if ( ! count( $comments ) ) {
-		echo '<h4>"' . ucwords( $user->display_name ) . '" ' . __( 'has not posted a comment', 'reckoning' ) . '.</h4>';
+		echo '<h4>';
+		echo '"' . esc_html( ucwords( $user->display_name ) . '" ' . __( 'has not posted a comment', 'reckoning' ) ) . '.';
+		echo '</h4>';
 	} else {
-		echo "<table class = 'reckoning-table reckoning-table-all'>";
-		echo "<tr><th colspan='2'><h3>User Comments</h3></th></tr>";
+		echo '<table class="reckoning-table reckoning-table-all">';
+		echo '<tr><th colspan="2"><h3>User Comments</h3></th></tr>';
 		foreach ( $comments as $comment ) :
 			$post = get_post( $comment->comment_post_ID );
 			preg_match( '/([0-9]{4})-([0-9]{2})-([0-9]{2})/', $comment->comment_date, $matches );
-			$date = "$matches[2]/$matches[3]/$matches[1]";
-
+			$date = "{$matches[2]}/{$matches[3]}/{$matches[1]}";
 			echo '<tr>';
-			echo "<td>On <a href='" . $post->guid . '#comment-' . $comment->comment_ID . "'>$post->post_title</a></td>";
-			echo "<td>$date</td>";
+			echo '<td>On ';
+			echo '<a href="' . esc_url( $post->guid . '#comment-' . $comment->comment_ID ) . '">';
+			echo esc_html( $post->post_title );
+			echo '</a>';
+			echo '</td>';
+			echo '<td>' . esc_html( $date ) . '</td>';
 			echo '</tr>';
-			endforeach;
-		echo '<tr><td>' . __( 'Total Comments', 'reckoning' ) . '</td><td>' . count( $comments ) . '</td></tr>';
+		endforeach;
+		echo '<tr>';
+		echo '<td>' . esc_html( __( 'Total Comments', 'reckoning' ) ) . '</td>';
+		echo '<td>' . (int) count( $comments ) . '</td>';
+		echo '</tr>';
 		echo '</table>';
 	}
 	echo '<p>&nbsp;</p>';
 	endforeach;
-?>
-	</div>
-<?php
+
+	echo '</div>';
 
 } // display_reckoning_admin_page_all
