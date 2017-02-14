@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=rice@
 Tags: comments, posts, tools, reckoning, reckon, tally, assessment, teaching, education
 Requires at least: 3.5.1
 Tested up to: 4.7.2
-Stable tag: 1.0.2
+Stable tag: 2.0.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -60,6 +60,11 @@ Just install like you would regularly. This plugin does not create any table or 
 Please report any issues with the plugin via the [Github repository](https://github.com/shawnrice/wp-reckoning).
 
 == Changelog ==
+= 2.0.0 =
+* Include private posts (breaking change) [PR](https://github.com/shawnrice/reckoning/pull/2) [@boonebgorges](https://github.com/boonebgorges)
+* Fix coding standards
+* Better sanitization
+
 = 1.0.1 =
 * Added headers to tables for clarity.
 
