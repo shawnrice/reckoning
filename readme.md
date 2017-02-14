@@ -5,8 +5,8 @@
 **Requires at least:** 3.5.1
 **Tested up to:** 4.7.2
 **Stable tag:** 2.0.0
-**License:** GPLv2 or later
-**License URI:** http://www.gnu.org/licenses/gpl-2.0.html
+**License:** MIT
+**License URI:** https://opensource.org/licenses/MIT
 
 Adds a submenu (under Users) that tallies all the users' posts and comments on a blog, especially useful for assement of blogs for classes. Note: WordPress Multisite Only.
 
@@ -71,6 +71,7 @@ Please report any issues with the plugin via the [Github repository](https://git
 * Include private posts [PR](https://github.com/shawnrice/reckoning/pull/2) [@boonebgorges](https://github.com/boonebgorges)
 * Fix coding standards
 * Better sanitization
+* Change license
 
 ### 1.0.1 ###
 * Added headers to tables for clarity.
