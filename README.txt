@@ -8,7 +8,7 @@ Stable tag: 2.0.0
 License: MIT
 License URI: https://opensource.org/licenses/MIT
 
-Adds a submenu (under Users) that tallies all the users' posts and comments on a blog, especially useful for assement of blogs for classes. Note: WordPress Multisite Only.
+Adds a submenu (under Users) that tallies all the users' posts and comments on a blog, especially useful for assessment of blogs for classes.
 
 == Description ==
 
@@ -17,6 +17,8 @@ Reckoning provides a nice overview of a blog's content sorted by user. It provid
 This plugin creates no database tables, and it does not store or alter any data; it simply displays data in a convenient fashion.
 
 The initial use-case for Reckoning was for professors who use class blogs to assess their students' work at the end of the semester (read: The Reckoning). It basically gives a birds-eye-view of who has posted and commented.
+
+Note: WordPress Multisite only.
 
 <img src='https://raw.githubusercontent.com/shawnrice/reckoning/master/assets/screenshot-1.png' width='250px' alt='screenshot' />
 
